@@ -1,0 +1,8 @@
+FROM eclipse-temurin:17-jre-alpine
+LABEL auther="chandu"
+RUN adduser -D -h /usr/share/spc -s /bin/sh spc
+USER spc
+WORKDIR /usr/share/spc
+ADD target/spring-petclinic-4.0.0-SNAPSHOT.jar /usr/share/spc/spring-petclinic-4.0.0-SNAPSHOT.jar
+EXPOSE 8080/tcp
+CMD [ "java", "-jar", "/usr/share/spc/spring-petclinic-4.0.0-SNAPSHOT.jar" ]
